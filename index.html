@@ -1,0 +1,725 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        :root {
+            --back-col: #4e1406d0;
+            --text-col: #ff9;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        .parallex {
+            width: 100vw;
+            height: 100%;
+            background-image: url('PPhoto2.jpg');
+            background-attachment: fixed;
+            background-repeat: no-repeat;
+            background-position: center;
+            background-size: cover;
+            filter: contrast(3);
+        }
+
+        .sidenav {
+            height: 100%;
+            width: 0;
+            position: fixed;
+            z-index: 1;
+            top: 0;
+            left: 0;
+            background-color: #41170c;
+            overflow-x: hidden;
+            transition: 0.5s;
+            padding-top: 60px;
+        }
+
+        .sidenav a {
+            padding: 8px 8px 8px 32px;
+            text-decoration: none;
+            font-size: 25px;
+            color: #818181;
+            display: block;
+            transition: 0.3s;
+        }
+
+        .sidenav a:hover {
+            color: #ff9;
+        }
+
+        .sidenav .closebtn {
+            position: absolute;
+            top: 0;
+            right: 25px;
+            font-size: 36px;
+            margin-left: 50px;
+        }
+
+        #main {
+            transition: margin-left .5s;
+            padding: 16px;
+            background-color: #4e1406d0;
+            color: #ff9;
+            position: sticky;
+            top: 0;
+            left: 0;
+        }
+
+        .ontent {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: flex-start;
+            padding: 10%;
+            margin: 50px;
+            border-radius: 2%;
+            -webkit-backdrop-filter: blur(20px);
+        }
+
+        .ontenta,
+        .ontentb {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 10%;
+            margin: 50px;
+            border-radius: 2%;
+            -webkit-backdrop-filter: blur(20px);
+            gap: 50px;
+            flex-wrap: wrap;
+        }
+
+        .ontenta img,
+        .ontentb img {
+            width: 100%;
+            height: 50%;
+        }
+
+        .leftside,
+        .rightside {
+            width: 100vw;
+        }
+
+        @media (width < 500px) {
+
+            .leftside,
+            .rightside {
+                width: 45vw;
+            }
+        }
+
+        a {
+            text-decoration: none;
+            color: var(--text-col);
+            background-color: #280b04;
+            padding: 20px;
+            transition: 0.5s;
+            backdrop-filter: blur(5px);
+
+        }
+
+        a,
+        h1,
+        p {
+            color: var(--text-col);
+            font-weight: 600;
+        }
+
+        a:hover {
+            background-color: #111;
+            box-shadow: 10px 10px 10px 0 rgba(255, 255, 233, 0.5);
+        }
+
+        .accordion {
+            background-color: #3f0303;
+            color: var(--text-col);
+            cursor: pointer;
+            padding: 18px;
+            width: 100%;
+            text-align: left;
+            border: none;
+            outline: none;
+            transition: 0.4s;
+            font-size: 2rem;
+            font-weight: 500;
+        }
+
+        .panel {
+            padding: 0 18px;
+            background-color: var(--back-col);
+            display: none;
+            overflow: hidden;
+        }
+
+        .active,
+        .accordion:hover {
+            background-color: var(--back-col);
+        }
+
+        .shopping,
+        .footer {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+            flex-wrap: wrap;
+        }
+
+        .objard {
+            width: 300px;
+            transition: 0.4s;
+            margin: 10px;
+            padding: 10px;
+        }
+
+        .objard img {
+            width: 100%;
+            height: 250px;
+        }
+
+        .objard:hover {
+            box-shadow: 0 10px 20px rgba(226, 190, 59, 0.5);
+        }
+
+        .objard button {
+            width: 100%;
+            outline: 0;
+            color: aliceblue;
+            background-color: #172d13;
+            padding: 10px;
+            transition: 0.3s;
+        }
+
+        .objard button:hover {
+            background-color: aliceblue;
+            color: #172d13;
+        }
+
+        .objard img {
+            width: 280px;
+            height: 200px;
+        }
+
+        h3 {
+            color: #ff9;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .row {
+            display: flex;
+            flex-wrap: wrap;
+            padding: 0 4px;
+        }
+
+        .column {
+            flex: 25%;
+            max-width: 25%;
+            padding: 0 4px;
+        }
+
+        .column img {
+            margin-top: 8px;
+            vertical-align: middle;
+            width: 100%;
+        }
+
+        @media screen and (max-width: 800px) {
+            .column {
+                flex: 50%;
+                max-width: 50%;
+            }
+        }
+
+        @media screen and (max-width: 600px) {
+            .column {
+                flex: 100%;
+                max-width: 100%;
+            }
+        }
+
+        .footer {
+            background-color: rgb(60, 17, 17);
+            color: azure;
+            backdrop-filter: blur(10px);
+        }
+
+        .footone {
+            flex: 0 0 20%;
+            margin: 20px;
+        }
+
+        input[type=text], input[type=email],
+        textarea {
+            width: 100%;
+            padding: 12px;
+            border: 1px solid #0c0202;
+            border-radius: 4px;
+            box-sizing: border-box;
+            resize: vertical;
+        }
+
+        label {
+            padding: 12px 12px 12px 0;
+            display: inline-block;
+        }
+
+        input[type=submit] {
+            background-color: #04AA6D;
+            color: white;
+            padding: 12px 20px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            float: right;
+        }
+
+        .container {
+            border-radius: 5px;
+            background-color: #f2f2f2;
+            padding: 20px;
+        }
+
+        .col-25 {
+            float: left;
+            width: 25%;
+            margin-top: 6px;
+        }
+
+        .col-75 {
+            float: left;
+            width: 75%;
+            margin-top: 6px;
+        }
+
+        .row:after {
+            content: "";
+            display: table;
+            clear: both;
+        }
+
+        @media screen and (max-width: 600px) {
+
+            .col-25,
+            .col-75,
+            input[type=submit] {
+                width: 100%;
+                margin-top: 0;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="parallex">
+        <div id="mySidenav" class="sidenav">
+            <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
+            <a href="#aboutus">About</a>
+            <a href="#service">Services</a>
+            <a href="#shop">Shopping</a>
+            <a href="#gallary">Gallary</a>
+            <a href="#contact">Contact</a>
+        </div>
+        <div id="main">
+            <span style="font-size:30px;cursor:pointer" onclick="openNav()">&#9776; &nbsp; &nbsp; Nothing Sweets</span>
+        </div>
+        <div class="ontent">
+            <h1>Welcome To Our Shop!</h1><br />
+            <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Eum labore ratione dolore adipisci dolorum ad
+                facere, cum cumque quia similique aliquam numquam ipsa non praesentium obcaecati voluptatibus
+                repudiandae doloribus nemo vero mollitia quas. Distinctio in, eveniet suscipit quidem autem itaque
+                laudantium nisi tempore quas, tenetur ab voluptatum, porro voluptates perspiciatis placeat?</p><br />
+            <a href="#">Read More</a>
+        </div>
+
+        <!-- <div class="roller">
+            <marquee>
+                <img src="Gallary1.jpg" style="width:50vw">
+                <img src="Gallary4.jpg" style="width:50vw">
+                <img src="Gallary3.jpg" style="width:50vw">
+                <img src="Gallary5.jpg" style="width:50vw">
+                <img src="Gallary2.jpg" style="width:50vw">
+            </marquee>
+        </div> -->
+        <div class="menudetails">
+            <button class="accordion"
+                style="display: flex; justify-content: center; align-items: center;">Breakfast</button>
+            <div class="panel">
+                <div class="shopping">
+                    <div class="objard">
+                        <img src="Photo11.jpg" alt="" />
+                        <h3>Lorem, ipsum dolor.</h3>
+                        <button>Add to Cart</button>
+                    </div>
+                    <div class="objard">
+                        <img src="Photo12.jpg" alt="" />
+                        <h3>Lorem, ipsum dolor.</h3>
+                        <button>Add to Cart</button>
+                    </div>
+                    <div class="objard">
+                        <img src="Photo13.jpg" alt="" />
+                        <h3>Lorem, ipsum dolor.</h3>
+                        <button>Add to Cart</button>
+                    </div>
+                    <div class="objard">
+                        <img src="Photo14.jpg" alt="" />
+                        <h3>Lorem, ipsum dolor.</h3>
+                        <button>Add to Cart</button>
+                    </div>
+                    <div class="objard">
+                        <img src="Photo15.jpg" alt="" />
+                        <h3>Lorem, ipsum dolor.</h3>
+                        <button>Add to Cart</button>
+                    </div>
+                    <div class="objard">
+                        <img src="Photo16.jpg" alt="" />
+                        <h3>Lorem, ipsum dolor.</h3>
+                        <button>Add to Cart</button>
+                    </div>
+                    <div class="objard">
+                        <img src="Photo17.jpg" alt="" />
+                        <h3>Lorem, ipsum dolor.</h3>
+                        <button>Add to Cart</button>
+                    </div>
+                    <div class="objard">
+                        <img src="Photo18.jpg" alt="" />
+                        <h3>Lorem, ipsum dolor.</h3>
+                        <button>Add to Cart</button>
+                    </div>
+                    <div class="objard">
+                        <img src="Photo19.jpg" alt="" />
+                        <h3>Lorem, ipsum dolor.</h3>
+                        <button>Add to Cart</button>
+                    </div>
+                    <div class="objard">
+                        <img src="Photo20.jpg" alt="" />
+                        <h3>Lorem, ipsum dolor.</h3>
+                        <button>Add to Cart</button>
+                    </div>
+                </div>
+            </div>
+
+
+
+            <button class="accordion"
+                style="display: flex; justify-content: center; align-items: center;">Lunch</button>
+            <div class="panel">
+                <div class="shopping">
+                    <div class="objard">
+                        <img src="Photo11.jpg" alt="" />
+                        <h3>Lorem, ipsum dolor.</h3>
+                        <button>Add to Cart</button>
+                    </div>
+                    <div class="objard">
+                        <img src="Photo12.jpg" alt="" />
+                        <h3>Lorem, ipsum dolor.</h3>
+                        <button>Add to Cart</button>
+                    </div>
+                    <div class="objard">
+                        <img src="Photo13.jpg" alt="" />
+                        <h3>Lorem, ipsum dolor.</h3>
+                        <button>Add to Cart</button>
+                    </div>
+                    <div class="objard">
+                        <img src="Photo14.jpg" alt="" />
+                        <h3>Lorem, ipsum dolor.</h3>
+                        <button>Add to Cart</button>
+                    </div>
+                    <div class="objard">
+                        <img src="Photo15.jpg" alt="" />
+                        <h3>Lorem, ipsum dolor.</h3>
+                        <button>Add to Cart</button>
+                    </div>
+                    <div class="objard">
+                        <img src="Photo16.jpg" alt="" />
+                        <h3>Lorem, ipsum dolor.</h3>
+                        <button>Add to Cart</button>
+                    </div>
+                    <div class="objard">
+                        <img src="Photo17.jpg" alt="" />
+                        <h3>Lorem, ipsum dolor.</h3>
+                        <button>Add to Cart</button>
+                    </div>
+                    <div class="objard">
+                        <img src="Photo18.jpg" alt="" />
+                        <h3>Lorem, ipsum dolor.</h3>
+                        <button>Add to Cart</button>
+                    </div>
+                    <div class="objard">
+                        <img src="Photo19.jpg" alt="" />
+                        <h3>Lorem, ipsum dolor.</h3>
+                        <button>Add to Cart</button>
+                    </div>
+                    <div class="objard">
+                        <img src="Photo20.jpg" alt="" />
+                        <h3>Lorem, ipsum dolor.</h3>
+                        <button>Add to Cart</button>
+                    </div>
+                </div>
+            </div>
+            <button class="accordion"
+                style="display: flex; justify-content: center; align-items: center;">Dinner</button>
+            <div class="panel">
+                <div class="shopping">
+                    <div class="objard">
+                        <img src="Photo11.jpg" alt="" />
+                        <h3>Lorem, ipsum dolor.</h3>
+                        <button>Add to Cart</button>
+                    </div>
+                    <div class="objard">
+                        <img src="Photo12.jpg" alt="" />
+                        <h3>Lorem, ipsum dolor.</h3>
+                        <button>Add to Cart</button>
+                    </div>
+                    <div class="objard">
+                        <img src="Photo13.jpg" alt="" />
+                        <h3>Lorem, ipsum dolor.</h3>
+                        <button>Add to Cart</button>
+                    </div>
+                    <div class="objard">
+                        <img src="Photo14.jpg" alt="" />
+                        <h3>Lorem, ipsum dolor.</h3>
+                        <button>Add to Cart</button>
+                    </div>
+                    <div class="objard">
+                        <img src="Photo15.jpg" alt="" />
+                        <h3>Lorem, ipsum dolor.</h3>
+                        <button>Add to Cart</button>
+                    </div>
+                    <div class="objard">
+                        <img src="Photo16.jpg" alt="" />
+                        <h3>Lorem, ipsum dolor.</h3>
+                        <button>Add to Cart</button>
+                    </div>
+                    <div class="objard">
+                        <img src="Photo17.jpg" alt="" />
+                        <h3>Lorem, ipsum dolor.</h3>
+                        <button>Add to Cart</button>
+                    </div>
+                    <div class="objard">
+                        <img src="Photo18.jpg" alt="" />
+                        <h3>Lorem, ipsum dolor.</h3>
+                        <button>Add to Cart</button>
+                    </div>
+                    <div class="objard">
+                        <img src="Photo19.jpg" alt="" />
+                        <h3>Lorem, ipsum dolor.</h3>
+                        <button>Add to Cart</button>
+                    </div>
+                    <div class="objard">
+                        <img src="Photo20.jpg" alt="" />
+                        <h3>Lorem, ipsum dolor.</h3>
+                        <button>Add to Cart</button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="ontenta">
+                <div class="rightside" style="">
+                    <img src="PPhoto4.jpg" />
+                </div>
+                <div class="leftside">
+                    <h1>The Great Wine Bar!</h1><br />
+                    <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Iusto consequatur quo odit provident
+                        vel
+                        est aliquid
+                        ipsum, consequuntur rem dolores at labore similique hic quia ex eos eaque laborum doloremque
+                        amet
+                        itaque vero
+                        culpa magnam delectus. Perferendis beatae officia mollitia minima!</p>
+                    <br />
+                    <br />
+                    <br />
+                    <br />
+                </div>
+            </div>
+            <div class="ontenta">
+                <div class="rightside" style="">
+                    <img src="PPhoto3.jpg" />
+                </div>
+                <div class="leftside">
+                    <h1>Natural Environment!</h1><br />
+                    <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Iusto consequatur quo odit provident
+                        vel
+                        est aliquid
+                        ipsum, consequuntur rem dolores at labore similique hic quia ex eos eaque laborum doloremque
+                        amet
+                        itaque vero
+                        culpa magnam delectus. Perferendis beatae officia mollitia minima!</p>
+                    <br />
+                    <br />
+                    <br />
+                    <br />
+                </div>
+            </div>
+            <div class="ontenta">
+                <div class="rightside" style="">
+                    <img src="PPhoto6.jpg" />
+                </div>
+                <div class="leftside">
+                    <h1>Best Couple Dating Zone!</h1><br />
+                    <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Iusto consequatur quo odit provident
+                        vel
+                        est aliquid
+                        ipsum, consequuntur rem dolores at labore similique hic quia ex eos eaque laborum doloremque
+                        amet
+                        itaque vero
+                        culpa magnam delectus. Perferendis beatae officia mollitia minima!</p>
+                    <br />
+                    <br />
+                    <br />
+                    <br />
+                </div>
+            </div>
+            <div class="ontenta">
+                <div class="rightside" style="">
+                    <img src="PPhoto5.jpg" />
+                </div>
+                <div class="leftside">
+                    <h1>Our Chefs are Best!</h1><br />
+                    <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Iusto consequatur quo odit provident
+                        vel
+                        est aliquid
+                        ipsum, consequuntur rem dolores at labore similique hic quia ex eos eaque laborum doloremque
+                        amet
+                        itaque vero
+                        culpa magnam delectus. Perferendis beatae officia mollitia minima!</p>
+                    <br />
+                    <br />
+                    <br />
+                    <br />
+                </div>
+            </div>
+            <h1 align="center">OUR GALLARY WORLD</h1><br /><br />
+            <div class="row">
+                <div class="column">
+                    <img src="PPhoto1.jpg" style="width:100%">
+                    <img src="Photo2.jpg" style="width:100%">
+                    <img src="Photo3.jpg" style="width:100%">
+                    <img src="Photo4.jpg" style="width:100%">
+                    <img src="Photo5.jpg" style="width:100%">
+                    <img src="Photo6.jpg" style="width:100%">
+                </div>
+                <div class="column">
+                    <img src="Gallary1.jpg" style="width:100%">
+                    <img src="Photo7.jpg" style="width:100%">
+                    <img src="Photo6.jpg" style="width:100%">
+                    <img src="Photo5.jpg" style="width:100%">
+                    <img src="Photo4.jpg" style="width:100%">
+                    <img src="Photo3.jpg" style="width:100%">
+                </div>
+                <div class="column">
+                    <img src="Gallary2.jpg" style="width:100%">
+                    <img src="Photo2.jpg" style="width:100%">
+                    <img src="Photo3.jpg" style="width:100%">
+                    <img src="Photo4.jpg" style="width:100%">
+                    <img src="Photo5.jpg" style="width:100%">
+                    <img src="Photo6.jpg" style="width:100%">
+                </div>
+                <div class="column">
+                    <img src="Gallary4.jpg" style="width:100%">
+                    <img src="Photo7.jpg" style="width:100%">
+                    <img src="Photo6.jpg" style="width:100%">
+                    <img src="Photo5.jpg" style="width:100%">
+                    <img src="Photo4.jpg" style="width:100%">
+                    <img src="Photo3.jpg" style="width:100%">
+                </div>
+            </div>
+            <br/><br/><h1 align="center">OUR CONTACT FORM</h1><br/><br/>
+            <div class="container">
+                <form action="/action_page.php">
+                    <div class="row">
+                        <div class="col-25">
+                            <label for="fname">First Name</label>
+                        </div>
+                        <div class="col-75">
+                            <input type="text" id="fname" name="firstname" placeholder="Your name..">
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-25">
+                            <label for="lname">Last Name</label>
+                        </div>
+                        <div class="col-75">
+                            <input type="email" id="lname" name="lastname" placeholder="Your email..">
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-25">
+                            <label for="subject">Message</label>
+                        </div>
+                        <div class="col-75">
+                            <textarea id="subject" name="subject" placeholder="Your message.."
+                                style="height:200px"></textarea>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <input type="submit" value="Submit">
+                    </div>
+                </form>
+            </div>
+            <div class="footer">
+                <div class="footone">
+                    <strong>Address:</strong>
+                    <Address>Tenetur sapiente eligendi, aliquid corporis rerum omnis!</Address>
+                    <br />
+                    <strong>Phone Number:</strong>
+                    <em>+91 87658 57895</em>
+                </div>
+                <div class="footone">
+                    <strong>Address:</strong>
+                    <Address>Tenetur sapiente eligendi, aliquid corporis rerum
+                        omnis!</Address>
+                    <br />
+                    <strong>Phone Number:</strong>
+                    <em>+91 98643 48854</em>
+                </div>
+                <div class="footone">
+                    <strong>Address:</strong>
+                    <Address>Tenetur sapiente eligendi, aliquid corporis rerum
+                        omnis!</Address>
+                    <br />
+                    <strong>Phone Number:</strong>
+                    <em>+91 54647 45753</em>
+                </div>
+
+
+            </div>
+        </div>
+        <script>
+            function openNav() {
+                document.getElementById("mySidenav").style.width = "250px";
+                document.getElementById("main").style.marginLeft = "250px";
+            }
+
+            function closeNav() {
+                document.getElementById("mySidenav").style.width = "0";
+                document.getElementById("main").style.marginLeft = "0";
+            }
+            var acc = document.getElementsByClassName("accordion");
+            var i;
+
+            for (i = 0; i < acc.length; i++) {
+                acc[i].addEventListener("click", function () {
+                    this.classList.toggle("active");
+                    var panel = this.nextElementSibling;
+                    if (panel.style.display === "block") {
+                        panel.style.display = "none";
+                    } else {
+                        panel.style.display = "block";
+                    }
+                });
+            }
+        </script>
+</body>
+
+</html>
